@@ -16,6 +16,7 @@ turn off your microphone!**
 - Payout from file
 - Output (recording) to file
 - Change files at runtime
+- Speaking status with levels inside and outside of VC
 - Stop payout/output
 - Multiply chat (CPU load)
 
@@ -43,15 +44,21 @@ ffmpeg -i input.mp3 -f s16le -ac 2 -ar 48000 -acodec pcm_s16le input.raw
 From raw to mp3 (files with recordings):
 ```
 ffmpeg -f s16le -ac 2 -ar 48000 -acodec pcm_s16le -i output.raw clear_output.mp3
-
 ```
+
+For playout live stream you can use this one:
+```
+ffmpeg -y -i http://stream2.cnmns.net/hope-mp3 -f s16le -ac 2 -ar 48000 -acodec pcm_s16le input.raw
+```
+And set input.raw as input filename.
 
 ### Installing
 
 **-pre argument is necessary!** 
+**--upgrade is necessary if you installed v1 beta** 
 
 ```
-pip install --pre pytgcalls
+pip install --upgrade --pre pytgcalls
 ```
 
 ### How to test
@@ -97,9 +104,6 @@ async def main(client):
     # same with output (recording)
     # .restart_recording, .stop_output
 
-    # to send speaking status you can use this:
-    # group_call.send_speaking_group_call_action()
-
     # to mute yourself:
     # group_call.set_is_mute(True)
 
@@ -120,9 +124,7 @@ if __name__ == '__main__':
 
 ## Issues, bugs, questions
 
-I am aware of problems with the start of playout on login. I know about 
-a non-working sound analyzer (does not display how the bot speaks). 
-I know that debug logs are enabled. Everything else follow the links below.
+I know that debug logs are enabled.
 
 - Create issue on GitHub: https://github.com/MarshalX/tgcalls-beta/issues
 - Ask for help on Telegram chat https://t.me/tgcallschat
