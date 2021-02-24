@@ -4,10 +4,7 @@
 
 ### Notes
 
-**Only for Linux systems on x86_64 platform!**
-
-**If the sound does not start playing after entering the chat - turn on and 
-turn off your microphone!**
+**Only for Linux systems on x86_64 and ARM64 platform!**
 
 ### Features
 
